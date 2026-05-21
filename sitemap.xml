@@ -3,7 +3,7 @@
 
   <!-- 홈 -->
   <url>
-    <loc>https://goldguide.kr/</loc>
+    <loc>https://thingjae98.github.io/goldguide/</loc>
     <lastmod>2025-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -11,13 +11,13 @@
 
   <!-- 지역 SEO (Local) -->
   <url>
-    <loc>https://goldguide.kr/jongno/</loc>
+    <loc>https://thingjae98.github.io/goldguide/jongno/</loc>
     <lastmod>2025-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://goldguide.kr/anyang/</loc>
+    <loc>https://thingjae98.github.io/goldguide/anyang/</loc>
     <lastmod>2025-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -25,7 +25,7 @@
 
   <!-- 블로그 인덱스 -->
   <url>
-    <loc>https://goldguide.kr/blog/</loc>
+    <loc>https://thingjae98.github.io/goldguide/blog/</loc>
     <lastmod>2025-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -33,31 +33,31 @@
 
   <!-- 블로그 글 -->
   <url>
-    <loc>https://goldguide.kr/blog/14k-18k-24k-difference/</loc>
+    <loc>https://thingjae98.github.io/goldguide/blog/14k-18k-24k-difference/</loc>
     <lastmod>2025-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://goldguide.kr/blog/gold-price-guide/</loc>
+    <loc>https://thingjae98.github.io/goldguide/blog/gold-price-guide/</loc>
     <lastmod>2025-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://goldguide.kr/blog/gold-ring-buying-guide/</loc>
+    <loc>https://thingjae98.github.io/goldguide/blog/gold-ring-buying-guide/</loc>
     <lastmod>2025-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://goldguide.kr/blog/gold-care-guide/</loc>
+    <loc>https://thingjae98.github.io/goldguide/blog/gold-care-guide/</loc>
     <lastmod>2025-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://goldguide.kr/blog/gold-ring-size-guide/</loc>
+    <loc>https://thingjae98.github.io/goldguide/blog/gold-ring-size-guide/</loc>
     <lastmod>2025-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

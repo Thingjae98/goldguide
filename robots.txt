@@ -1,5 +1,5 @@
 # robots.txt — 금방가이드
-# https://goldguide.kr/robots.txt
+# https://thingjae98.github.io/goldguide/robots.txt
 
 User-agent: *
 Allow: /
@@ -12,4 +12,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /search?
 
-Sitemap: https://goldguide.kr/sitemap.xml
+Sitemap: https://thingjae98.github.io/goldguide/sitemap.xml
