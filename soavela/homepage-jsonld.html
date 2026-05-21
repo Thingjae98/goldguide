@@ -1,0 +1,108 @@
+<!--
+  ================================================================
+  [적용 위치] Cafe24 관리자 → 디자인 → 내 디자인 편집
+             → index.html → </body> 직전에 삽입
+  ================================================================
+-->
+
+<!-- ① Organization: 회사 정보 → 구글 지식 패널(Knowledge Panel) 구성 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "소아벨라",
+  "legalName": "(주)벨라골드",
+  "url": "https://soavela.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://soavela.com/web/upload/logo-soavela.png",
+    "width": 200,
+    "height": 60
+  },
+  "description": "24K 순금 반지·목걸이·팔찌 전문 쇼핑몰. 한국공식금거래소 인증 주얼리 브랜드.",
+  "foundingDate": "2021",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "율곡로8길 101 (묘동) 2층 201호",
+    "addressLocality": "종로구",
+    "addressRegion": "서울특별시",
+    "postalCode": "03127",
+    "addressCountry": "KR"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "soavelajewelry@gmail.com",
+    "contactType": "customer service",
+    "availableLanguage": "Korean"
+  },
+  "sameAs": [
+    "https://www.instagram.com/soavela_official",
+    "https://www.facebook.com/soavela",
+    "https://www.youtube.com/@soavela"
+  ]
+}
+</script>
+
+<!-- ② WebSite: 사이트 정보 → 구글 검색창에 사이트 내 검색 기능 활성화 가능 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "소아벨라",
+  "url": "https://soavela.com",
+  "description": "24K 순금 반지·목걸이·팔찌 전문 쇼핑몰. 한국공식금거래소 인증.",
+  "inLanguage": "ko-KR",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://soavela.com/product/search.html?keyword={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- ③ ItemList: 홈 베스트셀러 상품 목록 → 구글 쇼핑 탭 노출 강화 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "소아벨라 베스트셀러",
+  "description": "소아벨라 가장 많이 팔린 순금·금 주얼리 베스트 상품",
+  "url": "https://soavela.com/product/list.html?cate_no=24",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "24k 순금 슈가 하트 반지 1.875g",
+      "url": "https://soavela.com/product/detail.html?product_no=REPLACE_NO_1",
+      "image": "https://soavela.com/web/product/medium/ht0422.jpg"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "24k 순금 퓨어 리본 목걸이 3.75g",
+      "url": "https://soavela.com/product/detail.html?product_no=REPLACE_NO_2",
+      "image": "https://soavela.com/web/product/medium/rb0506.jpg"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "14k 18k 럭스 링크 큐빅 목걸이",
+      "url": "https://soavela.com/product/detail.html?product_no=REPLACE_NO_3",
+      "image": "https://soavela.com/web/product/medium/FE3193.jpg"
+    }
+  ]
+}
+</script>
+
+<!--
+  ================================================================
+  [TODO] 실제 적용 전 교체 항목
+  - logo URL: 실제 로고 이미지 경로로 교체
+  - sameAs: 실제 SNS 계정 URL로 교체
+  - ItemList의 product_no: 실제 베스트셀러 상품 번호로 교체
+  - foundingDate: 실제 창업 연도로 확인
+  ================================================================
+-->

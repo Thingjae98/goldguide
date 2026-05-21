@@ -1,0 +1,93 @@
+<!--
+  ================================================================
+  [적용 위치] Cafe24 관리자 → 디자인 → 내 디자인 편집
+             → product/list.html (카테고리 목록 스킨) → <head> 안에 삽입
+  Cafe24 변수: {$category_name}, {$mall_url}, {$cate_no}
+  ================================================================
+-->
+
+<!-- ① title: 카테고리명 + 브랜드 (동적) -->
+<title>{$category_name} 추천 | 소아벨라 24K 순금 주얼리 쇼핑몰</title>
+
+<!-- ② meta description: 카테고리별로 아래 if 블록에서 자동 분기 -->
+<!--
+  Cafe24는 {$cate_no}로 카테고리 번호를 판별 가능.
+  아래 모듈 코드는 Cafe24 스킨 언어(Smarty)를 사용.
+-->
+{if $cate_no == 221}
+<meta name="description" content="소아벨라 24K 순금 컬렉션. 순금 반지·목걸이·팔찌를 한눈에. 한국공식금거래소 인증, 정품 보증서 발급. 돌잔치·결혼·기념일 선물 추천.">
+<link rel="canonical" href="https://soavela.com/product/list.html?cate_no=221">
+<meta property="og:title" content="소아벨라 24K 순금 컬렉션 — 순금 반지·목걸이·팔찌">
+<meta property="og:description" content="한국공식금거래소 인증 24K 순금 주얼리. 돌잔치·결혼·기념일 선물 추천.">
+<meta property="og:url" content="https://soavela.com/product/list.html?cate_no=221">
+
+{elseif $cate_no == 25}
+<meta name="description" content="소아벨라 금반지 컬렉션. 24K 순금반지·14K·18K 반지를 한 곳에서. 돌반지·커플링·약혼반지 전문. 정품 보증서 발급, 전국 무료배송.">
+<link rel="canonical" href="https://soavela.com/product/list.html?cate_no=25">
+<meta property="og:title" content="소아벨라 금반지 — 24K 순금반지·14K·18K 반지 모음">
+<meta property="og:description" content="돌반지·커플링·약혼반지 전문. 정품 보증서 발급, 전국 무료배송.">
+<meta property="og:url" content="https://soavela.com/product/list.html?cate_no=25">
+
+{elseif $cate_no == 26}
+<meta name="description" content="소아벨라 금귀걸이 컬렉션. 24K 순금귀걸이·14K·18K 귀걸이 모음. 드롭·후프·스터드 다양한 디자인. 정품 보증서 발급, 전국 무료배송.">
+<link rel="canonical" href="https://soavela.com/product/list.html?cate_no=26">
+<meta property="og:title" content="소아벨라 금귀걸이 — 24K 순금귀걸이·14K·18K 모음">
+<meta property="og:description" content="드롭·후프·스터드 다양한 디자인. 정품 보증서 발급, 전국 무료배송.">
+<meta property="og:url" content="https://soavela.com/product/list.html?cate_no=26">
+
+{elseif $cate_no == 27}
+<meta name="description" content="소아벨라 금목걸이 컬렉션. 24K 순금목걸이·14K·18K 목걸이 모음. 체인·펜던트·레이어드 스타일링 추천. 정품 보증서 발급.">
+<link rel="canonical" href="https://soavela.com/product/list.html?cate_no=27">
+<meta property="og:title" content="소아벨라 금목걸이 — 24K 순금목걸이·14K·18K 모음">
+<meta property="og:description" content="체인·펜던트·레이어드 스타일링. 정품 보증서 발급, 전국 무료배송.">
+<meta property="og:url" content="https://soavela.com/product/list.html?cate_no=27">
+
+{elseif $cate_no == 28}
+<meta name="description" content="소아벨라 금팔찌·발찌 컬렉션. 24K 순금팔찌·14K·18K 팔찌·발찌 모음. 선물·기념일·커플 팔찌 전문. 정품 보증서 발급.">
+<link rel="canonical" href="https://soavela.com/product/list.html?cate_no=28">
+<meta property="og:title" content="소아벨라 금팔찌·발찌 — 24K 순금팔찌·14K·18K 모음">
+<meta property="og:description" content="선물·기념일·커플 팔찌 전문. 정품 보증서 발급, 전국 무료배송.">
+<meta property="og:url" content="https://soavela.com/product/list.html?cate_no=28">
+
+{elseif $cate_no == 42}
+<meta name="description" content="소아벨라 커플링 컬렉션. 24K 순금 커플링·14K·18K 커플반지 모음. 프러포즈·기념일·결혼 기념 커플링 전문. 각인 서비스 가능.">
+<link rel="canonical" href="https://soavela.com/product/list.html?cate_no=42">
+<meta property="og:title" content="소아벨라 커플링 — 순금·14K·18K 커플반지 모음">
+<meta property="og:description" content="프러포즈·기념일·결혼 커플링 전문. 각인 서비스 가능, 전국 무료배송.">
+<meta property="og:url" content="https://soavela.com/product/list.html?cate_no=42">
+
+{elseif $cate_no == 24}
+<meta name="description" content="소아벨라 BEST 상품 모음. 가장 많이 팔린 24K 순금·14K·18K 주얼리 인기 순위. 반지·목걸이·팔찌·귀걸이 베스트셀러.">
+<link rel="canonical" href="https://soavela.com/product/list.html?cate_no=24">
+<meta property="og:title" content="소아벨라 BEST — 가장 많이 팔린 순금·금 주얼리">
+<meta property="og:description" content="반지·목걸이·팔찌·귀걸이 베스트셀러 모음.">
+<meta property="og:url" content="https://soavela.com/product/list.html?cate_no=24">
+
+{else}
+<!-- 기타 카테고리 기본값 -->
+<meta name="description" content="소아벨라 {$category_name} 모음. 24K 순금·14K·18K 주얼리 전문 쇼핑몰. 한국공식금거래소 인증, 정품 보증서 발급, 전국 무료배송.">
+<link rel="canonical" href="https://soavela.com/product/list.html?cate_no={$cate_no}">
+<meta property="og:title" content="소아벨라 {$category_name} 모음 | 순금·금 주얼리">
+<meta property="og:description" content="소아벨라 {$category_name}. 한국공식금거래소 인증, 정품 보증서 발급.">
+<meta property="og:url" content="https://soavela.com/product/list.html?cate_no={$cate_no}">
+{/if}
+
+<!-- 공통 OG 태그 (카테고리 무관) -->
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://soavela.com/web/upload/og-image-soavela.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="소아벨라">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+
+<!--
+  ================================================================
+  [h1 태그 추가 — 같은 파일 body 영역에 삽입]
+  현재 카테고리 페이지에 h1이 없음. 아래 코드를 상품 목록 위에 추가.
+  ================================================================
+  <h1 class="category-title">{$category_name}</h1>
+  (CSS로 시각적으로 숨기고 싶다면: .sr-only 클래스 적용)
+  ================================================================
+-->

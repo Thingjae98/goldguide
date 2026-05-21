@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(gh repo *)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\mj985\\\\.claude\\\\commands\")",
+      "Bash(Out-Null)",
+      "Bash(Test-Path \"C:\\\\Users\\\\mj985\\\\.claude\\\\commands\")",
+      "Bash(npx skills@latest *)",
+      "Bash(pip install *)",
+      "Bash(python -c \"from config import ensure_dirs, parse_llm_json; print\\('config OK'\\)\")",
+      "PowerShell(Get-Command *)",
+      "PowerShell($pyExe = \"C:\\\\Users\\\\mj985\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python311\\\\python.exe\"; Set-Location \"C:\\\\Users\\\\mj985\\\\Desktop\\\\2025프로젝트\\\\seo\\\\auto\"; & $pyExe -c \"from config import ensure_dirs, parse_llm_json; print\\('config OK'\\)\")",
+      "PowerShell($pyExe = \"C:\\\\Users\\\\mj985\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python311\\\\python.exe\"; Set-Location \"C:\\\\Users\\\\mj985\\\\Desktop\\\\2025프로젝트\\\\seo\\\\auto\"; & $pyExe -c \"import app; print\\('app.py OK'\\)\" 2>&1)",
+      "PowerShell($py = \"C:\\\\Users\\\\mj985\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python311\\\\python.exe\"; Set-Location \"C:\\\\Users\\\\mj985\\\\Desktop\\\\2025프로젝트\\\\seo\\\\auto\"; & $py _verify.py)",
+      "PowerShell(Start-Sleep -Seconds 2; try { $r = Invoke-WebRequest -Uri \"http://localhost:5000/audit\" -UseBasicParsing -TimeoutSec 5; \"Status: $\\($r.StatusCode\\), Length: $\\($r.Content.Length\\)\" } catch { \"Error: $_\" })",
+      "PowerShell($body = '{\"keyword\":\"금반지\",\"engine\":\"google\",\"rank\":5,\"date\":\"2026-05-20\"}'; $r = Invoke-WebRequest -Uri \"http://localhost:5000/api/rank\" -Method POST -Body $body -ContentType \"application/json\" -UseBasicParsing -TimeoutSec 5; $r.Content)",
+      "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:5000/rank\" -UseBasicParsing -TimeoutSec 5; if \\($r.Content -match \"금반지\"\\) { \"순위 데이터 렌더링 OK\" } else { \"렌더링 실패\" })",
+      "PowerShell(Stop-Process *)"
+    ]
+  }
+}

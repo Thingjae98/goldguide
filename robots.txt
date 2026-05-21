@@ -1,0 +1,15 @@
+# robots.txt — 금방가이드
+# https://goldguide.kr/robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /search?
+
+# 네이버봇 전용 규칙
+User-agent: Yeti
+Allow: /
+Disallow: /admin/
+Disallow: /search?
+
+Sitemap: https://goldguide.kr/sitemap.xml

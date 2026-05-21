@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>soavela.com SEO 감사 보고서 — 2025.05.08</title>
+<style>
+  :root {
+    --red:    #e53e3e;
+    --yellow: #d69e2e;
+    --green:  #38a169;
+    --blue:   #3182ce;
+    --gray:   #718096;
+    --bg:     #f7fafc;
+    --card:   #ffffff;
+    --border: #e2e8f0;
+    --text:   #1a202c;
+    --sub:    #4a5568;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── 헤더 ── */
+  .report-header {
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    color: #fff;
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+  }
+  .report-header .badge {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+  .report-header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem; }
+  .report-header p  { font-size: 0.95rem; color: #a0aec0; }
+  .report-header .url { color: #90cdf4; font-weight: 600; margin-top: 0.25rem; }
+
+  /* ── 스코어카드 ── */
+  .scorecard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+  }
+  .score-item {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .score-item .num {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .score-item .label { font-size: 0.8rem; color: var(--gray); }
+  .score-item.danger  .num { color: var(--red); }
+  .score-item.warn    .num { color: var(--yellow); }
+  .score-item.ok      .num { color: var(--green); }
+
+  /* ── 섹션 레이아웃 ── */
+  .section {
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+    padding: 0 1.5rem;
+  }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-title .icon {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; flex-shrink: 0;
+  }
+  .icon-red    { background: #fff5f5; color: var(--red); }
+  .icon-yellow { background: #fffff0; color: var(--yellow); }
+  .icon-green  { background: #f0fff4; color: var(--green); }
+  .icon-blue   { background: #ebf8ff; color: var(--blue); }
+
+  /* ── 이슈 카드 ── */
+  .issue-list { display: flex; flex-direction: column; gap: 1rem; }
+  .issue-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  }
+  .issue-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+  }
+  .severity {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+  }
+  .sev-critical { background: #fff5f5; color: var(--red); border: 1px solid #fed7d7; }
+  .sev-warning  { background: #fffff0; color: var(--yellow); border: 1px solid #faf089; }
+  .issue-head-text h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.15rem; }
+  .issue-head-text p  { font-size: 0.83rem; color: var(--sub); }
+
+  .impact-bar {
+    padding: 0.5rem 1.25rem;
+    background: #f7fafc;
+    border-top: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .impact-tag {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.72rem;
+  }
+  .tag-ctr   { background: #ebf8ff; color: #2b6cb0; }
+  .tag-index { background: #f0fff4; color: #276749; }
+  .tag-rich  { background: #faf5ff; color: #6b46c1; }
+  .tag-img   { background: #fffaf0; color: #c05621; }
+  .tag-local { background: #fff5f5; color: #c53030; }
+
+  /* ── Before/After 코드 블록 ── */
+  .diff-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+  .diff-before, .diff-after {
+    padding: 0.75rem 1.25rem;
+  }
+  .diff-before { background: #fff5f5; border-right: 1px solid var(--border); }
+  .diff-after  { background: #f0fff4; }
+  .diff-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.4rem;
+  }
+  .diff-before .diff-label { color: var(--red); }
+  .diff-after  .diff-label { color: var(--green); }
+  pre {
+    font-family: 'Menlo', 'Consolas', monospace;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-all;
+    color: #2d3748;
+  }
+  .line-del { color: var(--red); }
+  .line-add { color: var(--green); }
+
+  /* ── 검색결과 미리보기 ── */
+  .serp-preview {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  }
+  .serp-label {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border);
+  }
+  .serp-label.before { background: #fff5f5; color: var(--red); }
+  .serp-label.after  { background: #f0fff4; color: var(--green); }
+  .serp-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 1.25rem; }
+  .serp-item { font-family: Arial, sans-serif; }
+  .serp-url  { font-size: 0.78rem; color: #3c4043; margin-bottom: 0.15rem; }
+  .serp-title { font-size: 1.1rem; color: #1a0dab; font-weight: 400; margin-bottom: 0.15rem; cursor: pointer; }
+  .serp-title:hover { text-decoration: underline; }
+  .serp-desc { font-size: 0.83rem; color: #3c4043; line-height: 1.5; }
+  .serp-rating { display: flex; align-items: center; gap: 0.3rem; font-size: 0.83rem; color: #3c4043; margin-bottom: 0.1rem; }
+  .serp-stars { color: #f5a623; letter-spacing: -1px; }
+  .serp-price { color: #188038; font-weight: 600; }
+  .serp-breadcrumb { font-size: 0.78rem; color: #3c4043; margin-bottom: 0.1rem; }
+
+  /* ── 로드맵 타임라인 ── */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    background: var(--card);
+    overflow: hidden;
+  }
+  .tl-item:first-child { border-radius: 12px 12px 0 0; }
+  .tl-item:last-child  { border-bottom: 1px solid var(--border); border-radius: 0 0 12px 12px; }
+  .tl-period {
+    background: #2d3748;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+    gap: 0.2rem;
+  }
+  .tl-period .week { font-size: 0.65rem; color: #a0aec0; font-weight: 400; }
+  .tl-content { padding: 1rem 1.25rem; border-left: 3px solid var(--blue); }
+  .tl-content h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .tl-content ul { padding-left: 1rem; font-size: 0.83rem; color: var(--sub); }
+  .tl-content ul li { margin-bottom: 0.2rem; }
+  .tl-effect { display: inline-block; font-size: 0.72rem; font-weight: 600; color: var(--green); background: #f0fff4; padding: 0.15rem 0.5rem; border-radius: 4px; margin-top: 0.4rem; }
+
+  .tl-item:nth-child(2) .tl-content { border-left-color: #6b46c1; }
+  .tl-item:nth-child(3) .tl-content { border-left-color: var(--green); }
+  .tl-item:nth-child(4) .tl-content { border-left-color: var(--yellow); }
+
+  /* ── 파일 목록 ── */
+  .file-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .file-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  }
+  .file-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .file-name { font-size: 0.82rem; font-weight: 700; color: var(--blue); font-family: monospace; margin-bottom: 0.15rem; }
+  .file-desc { font-size: 0.78rem; color: var(--sub); }
+  .file-step { font-size: 0.68rem; color: var(--gray); margin-top: 0.2rem; }
+
+  /* ── 반응형 ── */
+  @media (max-width: 680px) {
+    .scorecard { grid-template-columns: repeat(2, 1fr); }
+    .diff-wrap { grid-template-columns: 1fr; }
+    .diff-before { border-right: none; border-bottom: 1px solid var(--border); }
+    .file-grid { grid-template-columns: 1fr; }
+    .tl-item { grid-template-columns: 80px 1fr; }
+    .report-header h1 { font-size: 1.4rem; }
+  }
+
+  /* ── 푸터 ── */
+  .report-footer {
+    background: #2d3748;
+    color: #a0aec0;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- ──────────────── 헤더 ──────────────── -->
+<div class="report-header">
+  <div class="badge">SEO AUDIT REPORT</div>
+  <h1>soavela.com SEO 감사 보고서</h1>
+  <p>분석일: 2025년 5월 8일 &nbsp;|&nbsp; 플랫폼: Cafe24</p>
+  <p class="url">https://soavela.com — 24K 순금 주얼리 쇼핑몰</p>
+</div>
+
+<!-- ──────────────── 스코어카드 ──────────────── -->
+<div class="scorecard">
+  <div class="score-item danger">
+    <div class="num">6</div>
+    <div class="label">Critical 오류<br>(즉시 수정 필요)</div>
+  </div>
+  <div class="score-item warn">
+    <div class="num">3</div>
+    <div class="label">Warning<br>(개선 권장)</div>
+  </div>
+  <div class="score-item ok">
+    <div class="num">2</div>
+    <div class="label">정상<br>(robots / sitemap)</div>
+  </div>
+  <div class="score-item" style="border-left: 3px solid var(--blue);">
+    <div class="num" style="color:var(--blue); font-size:1.5rem;">40+</div>
+    <div class="label">이미지 alt 텍스트<br>누락 (전체 상품)</div>
+  </div>
+</div>
+
+<!-- ──────────────── Critical 이슈 ──────────────── -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon icon-red">🔴</div>
+    Critical 문제 — 즉시 수정해야 순위에 영향
+  </div>
+  <div class="issue-list">
+
+    <!-- 이슈 1: h1 없음 -->
+    <div class="issue-card">
+      <div class="issue-head">
+        <span class="severity sev-critical">CRITICAL</span>
+        <div class="issue-head-text">
+          <h3>&lt;h1&gt; 태그 없음 — 검색엔진이 이 페이지의 핵심 주제를 파악할 수 없음</h3>
+          <p>홈·카테고리·상품 페이지 전체에 h1 없음. h2를 제목으로 사용 중.</p>
+        </div>
+      </div>
+      <div class="diff-wrap">
+        <div class="diff-before">
+          <div class="diff-label">BEFORE (현재)</div>
+          <pre><span class="line-del">&lt;h2&gt;소아벨라 | 한국공식금거래소&lt;/h2&gt;</span>
+<span class="line-del">&lt;h2&gt;카테고리별 인기 상품&lt;/h2&gt;</span></pre>
+        </div>
+        <div class="diff-after">
+          <div class="diff-label">AFTER (수정)</div>
+          <pre><span class="line-add">&lt;h1&gt;24K 순금 반지·목걸이·팔찌 &lt;/h1&gt;</span>
+<span class="line-add">&lt;h2&gt;카테고리별 인기 상품&lt;/h2&gt;</span></pre>
+        </div>
+      </div>
+      <div class="impact-bar">
+        예상 효과:
+        <span class="impact-tag tag-index">색인 정확도 향상</span>
+        <span class="impact-tag tag-ctr">키워드 매칭 강화</span>
+      </div>
+    </div>
+
+    <!-- 이슈 2: meta description 없음 -->
+    <div class="issue-card">
+      <div class="issue-head">
+        <span class="severity sev-critical">CRITICAL</span>
+        <div class="issue-head-text">
+          <h3>meta description 없음 — 구글이 임의의 텍스트를 발췌해 검색 결과에 표시</h3>
+          <p>클릭률(CTR) 직접 영향. 구매 유도 문구 없이 크롤러가 무작위 텍스트 사용 중.</p>
+        </div>
+      </div>
+      <div class="diff-wrap">
+        <div class="diff-before">
+          <div class="diff-label">BEFORE (현재)</div>
+          <pre><span class="line-del">&lt;!-- meta description 없음 --&gt;</span></pre>
+        </div>
+        <div class="diff-after">
+          <div class="diff-label">AFTER (수정)</div>
+          <pre><span class="line-add">&lt;meta name="description"
+  content="24K 순금 반지·목걸이·팔찌
+  전문 쇼핑몰 소아벨라. 한국공식
+  금거래소 인증, 정품 보증서 발급.
+  전국 무료배송."&gt;</span></pre>
+        </div>
+      </div>
+      <div class="impact-bar">
+        예상 효과:
+        <span class="impact-tag tag-ctr">CTR +20~30% 향상</span>
+      </div>
+    </div>
+
+    <!-- 이슈 3: canonical 없음 -->
+    <div class="issue-card">
+      <div class="issue-head">
+        <span class="severity sev-critical">CRITICAL</span>
+        <div class="issue-head-text">
+          <h3>canonical 태그 없음 — ?srsltid= 파라미터 URL이 별도 페이지로 색인 중</h3>
+          <p>유입 URL 예: soavela.com/?srsltid=AfmBOop... → 홈과 동일 콘텐츠인데 다른 페이지로 분류<br>→ 동일 페이지가 여러 URL로 쪼개져 순위 점수가 분산됨.</p>
+        </div>
+      </div>
+      <div class="diff-wrap">
+        <div class="diff-before">
+          <div class="diff-label">BEFORE (현재)</div>
+          <pre><span class="line-del">&lt;!-- canonical 없음 --&gt;
+soavela.com/?srsltid=AfmBOop...
+→ 별도 페이지로 색인됨</span></pre>
+        </div>
+        <div class="diff-after">
+          <div class="diff-label">AFTER (수정)</div>
+          <pre><span class="line-add">&lt;link rel="canonical"
+  href="https://soavela.com/"&gt;
+→ 모든 파라미터 URL이
+  홈으로 통합됨</span></pre>
+        </div>
+      </div>
+      <div class="impact-bar">
+        예상 효과:
+        <span class="impact-tag tag-index">중복 색인 제거</span>
+        <span class="impact-tag tag-ctr">순위 점수 통합</span>
+      </div>
+    </div>
+
+    <!-- 이슈 4: OG 태그 없음 -->
+    <div class="issue-card">
+      <div class="issue-head">
+        <span class="severity sev-critical">CRITICAL</span>
+        <div class="issue-head-text">
+          <h3>Open Graph 태그 없음 — 카카오톡·SNS 공유 시 빈 화면 표시</h3>
+          <p>링크를 공유해도 이미지·제목·설명 없이 URL만 표시 → 클릭 유도 불가.</p>
+        </div>
+      </div>
+      <div class="diff-wrap">
+        <div class="diff-before">
+          <div class="diff-label">BEFORE (현재)</div>
+          <pre style="color:#999;">카카오톡 공유 시:
+┌──────────────────┐
+│  soavela.com     │
+│  (이미지 없음)    │
+└──────────────────┘</pre>
+        </div>
+        <div class="diff-after">
+          <div class="diff-label">AFTER (수정)</div>
+          <pre><span class="line-add">카카오톡 공유 시:
+┌──────────────────────┐
+│ [순금 반지 이미지]    │
+│ 소아벨라 | 24K 순금   │
+│ 반지·목걸이 전문몰    │
+│ 전국 무료배송         │
+└──────────────────────┘</span></pre>
+        </div>
+      </div>
+      <div class="impact-bar">
+        예상 효과:
+        <span class="impact-tag tag-ctr">SNS 유입 채널 개방</span>
+      </div>
+    </div>
+
+    <!-- 이슈 5: JSON-LD 없음 -->
+    <div class="issue-card">
+      <div class="issue-head">
+        <span class="severity sev-critical">CRITICAL</span>
+        <div class="issue-head-text">
+          <h3>JSON-LD 구조화 데이터 없음 — 상품 별점·가격이 검색 결과에 표시 안 됨</h3>
+          <p>쇼핑몰인데 리치 스니펫(별점·가격·재고)이 없음. 경쟁 쇼핑몰 대비 클릭률 낮음.</p>
+        </div>
+      </div>
+      <div class="serp-preview" style="margin-top:0.75rem;">
+        <div class="serp-label before">BEFORE — 현재 검색 결과</div>
+        <div class="serp-body" style="padding: 1rem 1.25rem;">
+          <div class="serp-item">
+            <div class="serp-url">soavela.com › product</div>
+            <div class="serp-title">24k 순금 슈가 하트 반지 1.875g</div>
+            <div class="serp-desc">소아벨라. 장바구니 담기. 24k 순금 슈가 하트 반지 1.875g 상품입니다...</div>
+          </div>
+        </div>
+      </div>
+      <div class="serp-preview" style="margin-top:0.5rem;">
+        <div class="serp-label after">AFTER — JSON-LD 적용 후 예상</div>
+        <div class="serp-body" style="padding: 1rem 1.25rem;">
+          <div class="serp-item">
+            <div class="serp-breadcrumb">soavela.com › 반지 › 24K 순금반지</div>
+            <div class="serp-title">24K 순금 슈가 하트 반지 1.875g | 소아벨라</div>
+            <div class="serp-rating">
+              <span class="serp-stars">★★★★★</span>
+              <span>4.8 · 리뷰 127개</span>
+              <span class="serp-price">₩574,000</span>
+            </div>
+            <div class="serp-desc">한국공식금거래소 인증. 정품 보증서 발급. 전국 무료배송. 돌잔치·커플링·기념일 선물 추천.</div>
+          </div>
+        </div>
+      </div>
+      <div class="impact-bar">
+        예상 효과:
+        <span class="impact-tag tag-rich">리치 스니펫 노출</span>
+        <span class="impact-tag tag-ctr">CTR +20~35% 향상</span>
+      </div>
+    </div>
+
+    <!-- 이슈 6: alt 텍스트 없음 -->
+    <div class="issue-card">
+      <div class="issue-head">
+        <span class="severity sev-critical">CRITICAL</span>
+        <div class="issue-head-text">
+          <h3>상품 이미지 40개+ alt 텍스트 전부 없음 — 이미지 검색 유입 완전 차단</h3>
+          <p>"금반지", "순금목걸이" 이미지 검색에서 소아벨라 상품이 0건 노출.</p>
+        </div>
+      </div>
+      <div class="diff-wrap">
+        <div class="diff-before">
+          <div class="diff-label">BEFORE (현재)</div>
+          <pre><span class="line-del">&lt;img src="ht0422.jpg"&gt;</span>
+<span class="line-del">&lt;img src="rb0506.jpg"&gt;</span>
+<span class="line-del">&lt;img src="FE3193.jpg"&gt;</span>
+크롤러에게 이 이미지들은
+"의미 없는 파일"로 인식됨</pre>
+        </div>
+        <div class="diff-after">
+          <div class="diff-label">AFTER (수정)</div>
+          <pre><span class="line-add">&lt;img src="ht0422.jpg"
+  alt="소아벨라 24K 순금반지
+  하트 디자인 1.875g 돌잔치"&gt;
+&lt;img src="rb0506.jpg"
+  alt="소아벨라 24K 순금목걸이
+  리본 펜던트 3.75g"&gt;</span></pre>
+        </div>
+      </div>
+      <div class="impact-bar">
+        예상 효과:
+        <span class="impact-tag tag-img">이미지 검색 유입 개방</span>
+        <span class="impact-tag tag-index">크롤러 이해도 향상</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ──────────────── Warning ──────────────── -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon icon-yellow">🟡</div>
+    Warning — 개선하면 추가 효과
+  </div>
+  <div class="issue-list">
+
+    <div class="issue-card">
+      <div class="issue-head">
+        <span class="severity sev-warning">WARNING</span>
+        <div class="issue-head-text">
+          <h3>robots.txt Sitemap 선언 위치 오류</h3>
+          <p><code>Sitemap: https://soavela.com/sitemap.xml</code>이 <strong>bingbot 섹션에만</strong> 존재.<br>
+          Googlebot·네이버봇은 robots.txt에서 sitemap 경로를 찾지 못함.<br>
+          → Google Search Console + 네이버 서치어드바이저에 직접 수동 제출로 해결.</p>
+        </div>
+      </div>
+      <div class="impact-bar">
+        예상 효과: <span class="impact-tag tag-index">크롤링 촉진</span>
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-head">
+        <span class="severity sev-warning">WARNING</span>
+        <div class="issue-head-text">
+          <h3>시맨틱 HTML 미사용 — div 기반 구조</h3>
+          <p>header, nav, main, article, footer 등 시맨틱 태그 없음.<br>
+          Cafe24 스킨 전면 교체 없이는 수정 어려움 → 낮은 우선순위.</p>
+        </div>
+      </div>
+      <div class="impact-bar">
+        예상 효과: <span class="impact-tag tag-index">크롤러 구조 파악 향상</span>
+      </div>
+    </div>
+
+    <div class="issue-card">
+      <div class="issue-head">
+        <span class="severity sev-warning">WARNING</span>
+        <div class="issue-head-text">
+          <h3>preconnect / preload 없음 — 첫 화면 렌더링 지연</h3>
+          <p>외부 폰트·이미지 리소스 힌트 없음 → LCP 점수 불리.<br>
+          Cafe24 head 영역에 preconnect 2줄 추가로 즉시 개선 가능.</p>
+        </div>
+      </div>
+      <div class="impact-bar">
+        예상 효과: <span class="impact-tag tag-ctr">Core Web Vitals LCP 향상</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ──────────────── 8주 로드맵 ──────────────── -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon icon-blue">📅</div>
+    8주 구현 로드맵
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-period">
+        <span>Week</span>
+        <span style="font-size:1.4rem;">1</span>
+        <span class="week">즉시 효과</span>
+      </div>
+      <div class="tl-content">
+        <h4>Cafe24 스킨 메타태그 적용</h4>
+        <ul>
+          <li>홈 title / meta description / canonical 삽입</li>
+          <li>카테고리 7개 개별 메타태그 분기 처리</li>
+          <li>Open Graph + Twitter Card 전 페이지 적용</li>
+          <li>이미지 alt 텍스트 스킨 변수 자동화</li>
+        </ul>
+        <span class="tl-effect">→ SNS 공유 카드 정상화 + 색인 오류 감소</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">
+        <span>Week</span>
+        <span style="font-size:1.4rem;">2</span>
+        <span class="week">리치 스니펫</span>
+      </div>
+      <div class="tl-content">
+        <h4>JSON-LD 구조화 데이터 적용</h4>
+        <ul>
+          <li>상품 페이지: Product + BreadcrumbList + AggregateRating</li>
+          <li>홈페이지: Organization + WebSite + ItemList</li>
+          <li>Google Search Console 등록 + sitemap 제출</li>
+          <li>네이버 서치어드바이저 등록 + 수집 요청</li>
+        </ul>
+        <span class="tl-effect">→ 구글 쇼핑 탭 노출 + 별점·가격 리치 스니펫 준비</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">
+        <span>Week</span>
+        <span style="font-size:1.4rem;">3~4</span>
+        <span class="week">콘텐츠</span>
+      </div>
+      <div class="tl-content">
+        <h4>롱테일 키워드 정보성 콘텐츠 4편</h4>
+        <ul>
+          <li>「순금 24K·18K·14K 차이 완전 정리」</li>
+          <li>「돌반지 완벽 가이드 — 돈수·가격 계산법」</li>
+          <li>「여자친구 생일 금목걸이 선물 예산별 추천」</li>
+          <li>「커플링 순금 vs 14K 선택 기준」</li>
+        </ul>
+        <span class="tl-effect">→ 롱테일 키워드 색인 시작 + 이미지 검색 유입 증가</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">
+        <span>Week</span>
+        <span style="font-size:1.4rem;">5~8</span>
+        <span class="week">확장</span>
+      </div>
+      <div class="tl-content">
+        <h4>FAQ 콘텐츠 + 로컬 SEO + 성과 측정</h4>
+        <ul>
+          <li>「금 한 돈 몇 그램?」 FAQ JSON-LD 적용</li>
+          <li>구글 비즈니스 프로필 등록 (종로구 오프라인 위치)</li>
+          <li>Search Console 검색어 리포트 분석 후 전략 조정</li>
+          <li>Core Web Vitals (PageSpeed) 점수 측정 + 이미지 WebP 전환</li>
+        </ul>
+        <span class="tl-effect">→ "금반지" "금목걸이" 메인 키워드 순위 상승 시작</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ──────────────── 산출물 파일 ──────────────── -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon icon-green">📁</div>
+    준비된 구현 파일 — Cafe24 붙여넣기 즉시 적용 가능
+  </div>
+  <div class="file-grid">
+    <div class="file-card">
+      <div class="file-icon">📄</div>
+      <div>
+        <div class="file-name">homepage-meta.html</div>
+        <div class="file-desc">홈페이지 title / description / canonical / OG 전체</div>
+        <div class="file-step">→ Cafe24 index.html &lt;head&gt;에 삽입</div>
+      </div>
+    </div>
+    <div class="file-card">
+      <div class="file-icon">📄</div>
+      <div>
+        <div class="file-name">category-meta.html</div>
+        <div class="file-desc">카테고리 7개 메타태그 자동 분기 (Smarty 조건문)</div>
+        <div class="file-step">→ product/list.html &lt;head&gt;에 삽입</div>
+      </div>
+    </div>
+    <div class="file-card">
+      <div class="file-icon">📄</div>
+      <div>
+        <div class="file-name">product-jsonld.html</div>
+        <div class="file-desc">상품 JSON-LD: Product + BreadcrumbList + AggregateRating</div>
+        <div class="file-step">→ product/detail.html &lt;/body&gt; 직전 삽입</div>
+      </div>
+    </div>
+    <div class="file-card">
+      <div class="file-icon">📄</div>
+      <div>
+        <div class="file-name">homepage-jsonld.html</div>
+        <div class="file-desc">Organization + WebSite + ItemList (베스트셀러 3개)</div>
+        <div class="file-step">→ index.html &lt;/body&gt; 직전 삽입</div>
+      </div>
+    </div>
+    <div class="file-card">
+      <div class="file-icon">📋</div>
+      <div>
+        <div class="file-name">apply-guide.md</div>
+        <div class="file-desc">8단계 Cafe24 적용 체크리스트 (개발자 없이 가능)</div>
+        <div class="file-step">→ 적용 시 순서대로 체크</div>
+      </div>
+    </div>
+    <div class="file-card">
+      <div class="file-icon">📋</div>
+      <div>
+        <div class="file-name">alt-text-guide.md</div>
+        <div class="file-desc">이미지 alt 작성 공식 + 카테고리별 예시 전체</div>
+        <div class="file-step">→ 상품 등록 시 참고</div>
+      </div>
+    </div>
+    <div class="file-card">
+      <div class="file-icon">📋</div>
+      <div>
+        <div class="file-name">keyword-strategy.md</div>
+        <div class="file-desc">3단계 키워드 포트폴리오 + 8주 콘텐츠 캘린더</div>
+        <div class="file-step">→ 주차별 블로그 글 작성 기준</div>
+      </div>
+    </div>
+    <div class="file-card">
+      <div class="file-icon">📋</div>
+      <div>
+        <div class="file-name">robots-fix.md</div>
+        <div class="file-desc">robots.txt 실측 결과 + Sitemap 선언 오류 수정 방법</div>
+        <div class="file-step">→ Search Console 제출로 대체 해결</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ──────────────── 예상 효과 요약 ──────────────── -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon icon-green">📈</div>
+    예상 효과 타임라인
+  </div>
+  <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.05);">
+    <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+      <thead>
+        <tr style="background:#2d3748; color:#fff;">
+          <th style="padding:.75rem 1rem; text-align:left; font-weight:600;">기간</th>
+          <th style="padding:.75rem 1rem; text-align:left; font-weight:600;">예상 변화</th>
+          <th style="padding:.75rem 1rem; text-align:left; font-weight:600;">측정 방법</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:.75rem 1rem; font-weight:700; color:var(--blue);">1~2주</td>
+          <td style="padding:.75rem 1rem; color:var(--sub);">색인 오류 감소, SNS 공유 카드 정상화</td>
+          <td style="padding:.75rem 1rem; color:var(--gray); font-size:0.78rem;">Search Console Coverage 탭</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafafa;">
+          <td style="padding:.75rem 1rem; font-weight:700; color:var(--blue);">1개월</td>
+          <td style="padding:.75rem 1rem; color:var(--sub);">이미지 검색 유입 시작, 새 키워드 노출</td>
+          <td style="padding:.75rem 1rem; color:var(--gray); font-size:0.78rem;">Search Console 검색어 탭</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:.75rem 1rem; font-weight:700; color:var(--blue);">2~3개월</td>
+          <td style="padding:.75rem 1rem; color:var(--sub);">상품 리치 스니펫(별점·가격) 검색 노출</td>
+          <td style="padding:.75rem 1rem; color:var(--gray); font-size:0.78rem;">구글에서 상품명 직접 검색</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border); background:#fafafa;">
+          <td style="padding:.75rem 1rem; font-weight:700; color:var(--blue);">3~6개월</td>
+          <td style="padding:.75rem 1rem; color:var(--sub);">"돌반지", "순금목걸이 선물" 1페이지 진입</td>
+          <td style="padding:.75rem 1rem; color:var(--gray); font-size:0.78rem;">네이버·구글 직접 검색</td>
+        </tr>
+        <tr>
+          <td style="padding:.75rem 1rem; font-weight:700; color:var(--blue);">6개월+</td>
+          <td style="padding:.75rem 1rem; color:var(--sub);">"금반지", "금목걸이" 메인 키워드 순위 상승</td>
+          <td style="padding:.75rem 1rem; color:var(--gray); font-size:0.78rem;">Search Console 평균 게재순위</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ──────────────── 푸터 ──────────────── -->
+<div class="report-footer">
+  soavela.com SEO Audit Report &nbsp;|&nbsp; 분석일 2025-05-08 &nbsp;|&nbsp; 플랫폼: Cafe24
+</div>
+
+</body>
+</html>

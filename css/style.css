@@ -1,0 +1,370 @@
+/* ============================================================
+   Reset & Base
+============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  color: #1a1a1a;
+  background: #fff;
+  line-height: 1.7;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ============================================================
+   Layout Utilities
+============================================================ */
+.site-header__inner,
+.footer__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ============================================================
+   Header & Nav
+============================================================ */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.site-logo__text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #B8860B;
+  letter-spacing: -0.5px;
+}
+
+.nav-list {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-list a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #444;
+  transition: color 0.15s;
+}
+
+.nav-list a:hover {
+  color: #B8860B;
+}
+
+/* ============================================================
+   Hero
+   - img 크기 명시(width/height) → CLS 방지
+============================================================ */
+.hero {
+  position: relative;
+  overflow: hidden;
+  max-height: 520px;
+}
+
+.hero img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  /* CLS 방지: width/height는 HTML 속성에서 지정 */
+}
+
+.hero__text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 3rem;
+  background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, transparent 70%);
+  color: #fff;
+}
+
+.hero__text h1 {
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+.hero__sub {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background: #B8860B;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover {
+  background: #8B6914;
+}
+
+/* ============================================================
+   Categories
+============================================================ */
+.categories {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 1.25rem;
+}
+
+.categories h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.category-grid li a {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4/3;
+}
+
+.category-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.category-grid li a:hover img {
+  transform: scale(1.05);
+}
+
+.category-grid span {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ============================================================
+   Latest Posts
+============================================================ */
+.latest-posts {
+  max-width: 1100px;
+  margin: 0 auto 3rem;
+  padding: 0 1.25rem;
+}
+
+.latest-posts h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.post-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+
+.post-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.post-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.post-card__body {
+  padding: 1rem;
+}
+
+.post-card__body h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.post-card__meta {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.post-card__excerpt {
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   FAQ
+============================================================ */
+.faq {
+  max-width: 780px;
+  margin: 0 auto 4rem;
+  padding: 0 1.25rem;
+}
+
+.faq h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 1rem 0;
+}
+
+.faq-item:first-child {
+  border-top: 1px solid #e5e5e5;
+}
+
+.faq-item dt {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.faq-item dd {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ============================================================
+   Footer
+============================================================ */
+footer {
+  background: #1a1a1a;
+  color: #aaa;
+  padding: 2rem 0;
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.footer__copy {
+  font-size: 0.8rem;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.footer-nav a {
+  font-size: 0.8rem;
+  color: #aaa;
+  transition: color 0.15s;
+}
+
+.footer-nav a:hover {
+  color: #fff;
+}
+
+/* ============================================================
+   반응형 — Mobile First
+   모바일 기준 구글 색인(Mobile-First Indexing) 대응
+============================================================ */
+@media (max-width: 768px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .post-list {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__text {
+    padding: 1.5rem;
+  }
+
+  .nav-list {
+    gap: 1rem;
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .hero img {
+    height: 320px;
+  }
+
+  .hero__text h1 {
+    font-size: 1.3rem;
+  }
+}
