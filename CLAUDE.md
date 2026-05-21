@@ -77,14 +77,23 @@ seo/
 - [x] Phase 4 — sitemap.xml + robots.txt (goldguide.kr 도메인 기준)
 - [x] Phase 4.5 — 지역 SEO 페이지 (종로/안양 — LocalBusiness + 지역 특화 콘텐츠)
 - [x] Phase 4.6 — /blog 스킬 설치 (~/.claude/commands/blog.md → /blog 명령)
+- [x] Phase 4.7 — 키워드 클러스터링 (auto/generator/keyword_cluster.py — 7클러스터, 50+ 키워드)
+- [x] Phase 4.8 — 블로그 콘텐츠 5편 제작 (gold-price-guide, gold-ring-buying-guide, gold-care-guide, gold-ring-size-guide, 14k-18k-24k-difference)
+- [x] Phase 6 — GitHub Pages 배포 (https://thingjae98.github.io/goldguide/) + Google Search Console 소유권 인증 완료 + sitemap 제출
 - [ ] Phase 5 — 네이버 SEO 특화 (네이버 웹마스터 도구 인증 코드 교체)
-- [ ] Phase 6 — 실제 도메인 배포 후 Search Console 등록
 - [ ] Phase 7 — 성능 측정 (PageSpeed Insights 90점 이상 목표)
 
-## 8. 결정 보류 / TODO
+## 8. 배포 정보
 
-- [ ] 실제 도메인·호스팅 결정 (goldguide.kr 또는 대안)
+- **라이브 URL**: https://thingjae98.github.io/goldguide/
+- **GitHub 레포**: https://github.com/Thingjae98/goldguide
+- **Google Search Console**: 소유권 인증 완료 (2026-05-22), sitemap 제출 완료
+- **Google 인증 방법**: HTML 파일(google35623d6185d4d545.html) + HTML 메타태그 이중 인증
+
+## 9. 결정 보류 / TODO
+
+- [ ] 실제 도메인 연결 결정 (goldguide.kr 구입 후 Custom domain 설정)
 - [ ] 네이버 서치어드바이저 인증 코드 교체 (REPLACE_WITH_NAVER_VERIFICATION_CODE)
 - [ ] 실제 이미지 준비 (hero.webp, jongno-thumb.webp, anyang-thumb.webp 등)
-- [ ] 블로그 글 추가: 금 시세 2025, 금 악세서리 관리법, 커플링 추천 등
-- [ ] Google Search Console 등록 (배포 후)
+- [ ] 블로그 글 추가: 커플링 추천, 금팔찌 가이드 등 Cluster B·C 보강
+- [ ] Google 색인 상태 확인 (Search Console → 색인생성 → 페이지)
