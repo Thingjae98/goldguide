@@ -1,41 +1,43 @@
 # 네이버 서치어드바이저 등록 가이드
 
-> 네이버 검색 색인을 위한 설정 절차. 도메인 확정 후 아래 순서대로 진행.
+> 라이브 URL 기준 절차. 로그인·코드 발급만 직접 하시면 Claude가 코드 삽입·push를 대신합니다.
+> **등록할 사이트 URL: `https://thingjae98.github.io/goldguide/`**
 
 ---
 
-## 1단계: 서치어드바이저 접속 및 사이트 등록
+## 1단계: 서치어드바이저 접속 및 사이트 등록  ← 직접
 
 1. [https://searchadvisor.naver.com](https://searchadvisor.naver.com) 접속
-2. 네이버 계정으로 로그인
+2. 네이버 계정으로 로그인 (보안상 Claude가 대신 못 함)
 3. **웹마스터 도구 → 사이트 등록** 클릭
-4. 사이트 URL 입력 (예: `https://seouleats.example.com`)
+4. 사이트 URL 입력: `https://thingjae98.github.io/goldguide/`
 
 ---
 
 ## 2단계: 소유권 인증
 
-두 가지 방법 중 하나 선택:
+**방법 B(메타태그) 권장** — Claude가 git으로 바로 처리 가능:
 
-### 방법 A: HTML 파일 업로드 (권장)
-1. 서치어드바이저에서 제공하는 `naver12345abcde.html` 파일 다운로드
-2. 프로젝트 루트에 업로드 (`/naver12345abcde.html`)
-3. 브라우저에서 `https://내도메인.com/naver12345abcde.html` 접근 확인
-4. 서치어드바이저에서 **확인** 버튼 클릭
+### 방법 B: 메타태그 삽입 (권장)
+1. 소유확인 화면에서 "HTML 태그" 선택 → 아래 형태의 코드가 나옴
+   ```html
+   <meta name="naver-site-verification" content="abc123...실제코드" />
+   ```
+2. **`content="..."` 안의 코드 문자열만 복사해서 Claude에게 전달**
+3. Claude가 9개 HTML의 `REPLACE_WITH_NAVER_VERIFICATION_CODE`를 실제 코드로 교체 → push (자동)
+4. GitHub Pages 재배포(~1분) 후 네이버에서 **소유확인** 클릭
 
-### 방법 B: 메타태그 삽입
-`index.html`의 `<head>` 안 아래 태그의 `content` 값을 실제 코드로 교체:
-```html
-<meta name="naver-site-verification" content="실제_인증코드_입력">
-```
-현재 모든 HTML 파일에 이 태그가 준비되어 있음. 코드만 교체하면 됨.
+### 방법 A: HTML 파일 업로드 (대안)
+1. 서치어드바이저에서 `naverXXXX.html` 다운로드
+2. 파일을 Claude에게 전달 → repo 루트에 추가·push
+3. 네이버에서 **확인** 클릭
 
 ---
 
-## 3단계: sitemap.xml 제출
+## 3단계: sitemap.xml 제출  ← 직접
 
 1. 서치어드바이저 → **요청 → 사이트맵 제출**
-2. `https://내도메인.com/sitemap.xml` 입력 후 제출
+2. `sitemap.xml` 입력 후 제출 (전체: `https://thingjae98.github.io/goldguide/sitemap.xml`)
 
 ---
 
